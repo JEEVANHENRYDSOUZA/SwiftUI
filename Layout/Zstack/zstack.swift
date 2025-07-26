@@ -1,0 +1,91 @@
+//
+//  ContentView.swift
+//  testiu
+//
+//  Created by Jeevan Henry Dsouza on 2025-07-25.
+//
+
+import SwiftUI
+
+struct HeaderVew:View{
+    var title : String
+    var subtitle : String?
+    var desc  : String?
+    var back : Color = .primary
+    var body: some View{
+        
+        
+        VStack(alignment:.center,spacing:20){
+            Text(title).font(.largeTitle)
+
+            
+            
+            
+            
+            
+            if let subtitle = subtitle{
+                
+                
+                Text(subtitle)
+                    .font(.subheadline).foregroundStyle(.gray)
+            }
+            
+            
+            if let desc = desc{
+                
+                
+                Text(desc)
+                    .padding().frame(maxWidth:.infinity).background(back)
+            }
+            
+        }.font(.title)
+    }
+}
+
+struct TeamHeader: View {
+    var body: some View {
+        VStack{
+            Text("Team").font(.title2)
+            Image(systemName: "1.square.fill")
+        }.frame(width:75,height:75).background(Rectangle().fill(Color.yellow).opacity(0.9))
+    }
+}
+struct TeamFooter: View {
+    var body: some View {
+        VStack{
+            Text("Team").font(.title2)
+            Image(systemName: "1.square.fill")
+        }.frame(width:75,height:75).background(Rectangle().fill(Color.yellow).opacity(0.9))
+    }
+}
+
+struct DescView:View{
+    
+    var desc:String
+    var back:Color = .primary
+    var body: some View{
+        Text(desc)
+            .padding().frame(maxWidth:.infinity).background(back).font(.title)
+    }
+}
+
+
+struct ContentView: View {
+    
+    
+    var body: some View {
+        ZStack{
+            Color.gray
+            VStack(spacing: 30){
+                Text("Zstack").font(.largeTitle)
+                Text("Introduction").foregroundStyle(.white)
+                Text("Zstack are great for setting a background color").frame(maxWidth:.infinity).padding().background(.green)
+                Text("But notice the Color stops at the safe Areas(whit areas on top and bottm)").frame(maxWidth:.infinity).padding().background(.green)
+            }.font(.title)
+        }
+    }
+}
+
+#Preview {
+    ContentView()
+}
