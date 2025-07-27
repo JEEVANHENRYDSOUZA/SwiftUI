@@ -1,0 +1,44 @@
+# 🚀 All-in-One SwiftUI View Events Cheat Sheet
+
+This guide covers all major SwiftUI event modifiers — such as `.onAppear`, `.onMove`, `.onChange`, `.task`, and more — in one compact, code-rich reference.
+
+---
+
+## 📋 Summary Table
+
+| Modifier               | Purpose                                  |
+|------------------------|------------------------------------------|
+| `.onAppear`            | Runs when view appears                   |
+| `.onDisappear`         | Runs when view disappears                |
+| `.onMove`              | Enables drag-and-drop reordering in List |
+| `.onChange(of:)`       | Watches state or value changes           |
+| `.task`                | Triggers async work when view appears    |
+| `.onTapGesture`        | Detects a tap gesture                    |
+| `.onLongPressGesture`  | Detects a long press                     |
+| `.onSubmit`            | Triggers on keyboard submit/return       |
+| `.onHover`             | Detects hover (macOS/iPadOS only)        |
+| `.onDelete`            | Inside a List to allow swipe-to-delete 
+                         | functionality. It’s triggered when the user:
+                            swipes a row or taps Edit , then taps red minus icon
+-----------------------------------------------------------------------
+
+
+
+## 📋 Compatibility Table
+
+| Modifier                | Works on Any View? | Notes |
+|-------------------------|--------------------|-------|
+| `.onAppear`             | ✅ Yes              | Runs when view enters screen |
+| `.onDisappear`          | ✅ Yes              | Runs when view leaves screen |
+| `.onTapGesture`         | ✅ Yes              | Works on any interactive view |
+| `.onLongPressGesture`   | ✅ Yes              | Same as above |
+| `.onChange(of:)`        | ✅ Yes              | Monitors value changes; not tied to a view |
+| `.task` (iOS 15+)       | ✅ Yes              | Async work when view appears |
+| `.onSubmit`             | ⚠️ No – Input views only | Works on `TextField`, `TextEditor` |
+| `.onMove`               | ❌ No – `List` + `ForEach` only | Used for row reordering |
+| `.onHover`              | ✅ macOS/iPadOS only | Detects pointer hover |
+| `.onDelete`               | ❌ No – `List` + `ForEach` only | Used for row deleting |
+
+-----------------------------------------------------------------------
+
+    

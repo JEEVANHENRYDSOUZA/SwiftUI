@@ -1,0 +1,50 @@
+```swift
+
+- Async Await is a language feature that was introduced in Swift 5.5
+    - Just because we have async await that does not mean all API are automatically  async
+- Async Await is just a better way to create and read asynchronous code
+- But for use too actually use it , the underlying API must be rewritten or wrapper to support async
+
+- 🧱 Under the Hood: What’s Required?
+
+For an API to support async/await, it must:
+	•	Be annotated with async in its function signature
+	•	Use Swift concurrency under the hood (e.g., Task, Continuation, structured concurrency)
+	•	Run on iOS 15+, macOS 12+, etc. (because async/await requires OS and ABI support)
+
+// ✅ Async/Await Supported APIs in Swift (iOS 15+)
+
+// 🌐 URLSession (Networking)
+let (data, response) = try await URLSession.shared.data(from: url)
+
+// 📷 PhotosPicker (SwiftUI 4+)
+let data = try await item.loadTransferable(type: Data.self)
+
+// 📁 FileHandle (File Access)
+let content = try await fileHandle.readToEnd()
+
+// ⏰ Task & Sleep
+try await Task.sleep(nanoseconds: 1_000_000_000)
+
+// 💬 Speech Recognition (via wrapper or async API)
+let transcript = try await recognizer.transcribe(from: audio)
+
+// 📡 CloudKit (iOS 16+)
+let records = try await database.records(matching: query)
+
+- Wrapping  a function 
+    - Under the hood concurrency is thread based 
+        - Only difference is 
+            - In async we dont manage or assign it to thread it does does automatically by the task block
+            - In gcd it is manually done by the developer 
+    - So what we need to do is just include a async wrapper over it 
+   
+```swift 
+   func getData() async -> String {
+    await withCheckedContinuation { continuation in
+        DispatchQueue.global().async {
+            let result = "Done"
+            continuation.resume(returning: result)
+        }
+    }
+} 
