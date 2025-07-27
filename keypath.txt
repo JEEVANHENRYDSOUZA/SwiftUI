@@ -1,0 +1,20 @@
+# 🔑 Swift KeyPaths Guide
+
+KeyPaths in Swift are powerful tools that allow you to **reference properties** of a type without accessing them directly. Introduced in Swift 4, KeyPaths enable **type-safe, flexible, and reusable code** — especially in SwiftUI and Combine.
+
+---
+
+## 📚 What is a KeyPath?
+
+A `KeyPath` is a type-safe, compiler-checked reference to a property.
+
+```swift
+struct Person {
+    var name: String
+    var age: Int
+}
+
+let nameKeyPath = \Person.name // KeyPath<Person, String>
+let john = Person(name: "John", age: 30)
+print(john[keyPath: nameKeyPath]) // Prints: John
+As long as the property is not computed or static property we can use keypath
